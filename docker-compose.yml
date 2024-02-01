@@ -1,0 +1,63 @@
+version: '3.4'
+
+services:
+  db:
+    image: postgres
+    networks:
+      - lan
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  migrate:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.migrate
+    networks:
+      - lan
+    volumes:
+      - ./backend:/backend
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    depends_on:
+      - db
+
+  backend:
+    build:
+      context: ./backend
+    networks:
+      - lan
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/backend
+      - ./media:/media
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+    networks:
+      - lan
+    volumes:
+      - ./media:/media
+    ports:
+      - "80:80"
+      - 443:443
+    depends_on:
+      - backend
+
+networks:
+  lan:
+    driver: bridge
