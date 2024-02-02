@@ -192,6 +192,10 @@ html, body {
     z-index: 200;
 }
 
+.custom-dropdown:hover .dropdown-options{
+    display: block;
+}
+
 .selected {
 background-color: orange;
 color: transparent;
@@ -371,9 +375,6 @@ footer p {
     margin-right: 8px;
 }
 
-.custom-dropdown:hover .dropdown-options {
-    display: block;
-}
 
 .sidebar.open #resources-button {
     left: calc(200px + 10px);
@@ -383,9 +384,7 @@ footer p {
     left: calc(200px + 90px);
 }
 
-.custom-dropdown .dropdown-options {
-    display: none;
-}
+
 
 :root {
     --color-primary: #ffb10f;

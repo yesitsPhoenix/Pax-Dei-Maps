@@ -1,0 +1,6 @@
+backend/env
+__pycache__
+/data
+backend/paxdeimaps/migrations
+backend/assets/
+/media

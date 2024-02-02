@@ -1,0 +1,4 @@
+django==5.0.1
+djangorestframework
+psycopg2-binary
+pillow

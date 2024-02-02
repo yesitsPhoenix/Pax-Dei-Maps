@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/index.js"></script>
+<script src="js/map.js"></script>
+<html lang="en">
+
+<head>
+    <base target="_top">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="css/styles.css" rel="stylesheet">
+
+    <title>Pax Dei Maps</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/png">
+    <style>
+        .leaflet-container {
+            background: none !important;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('assets/background.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: top;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="logo-bar">
+
+        <button id="login-button" class="login-button">
+            <img src="assets/user.png" alt="User Icon">Login</button>
+
+        <button id="resources-button" onclick="toggleAndCloseSidebar()">
+            <img src="assets/marker.png" alt="Resources Icon">Resources</button>
+
+        <button class="clear-resources-button" onclick="closeSidebar()">
+            <img src="assets/clearall.png">Clear Resources </button>
+
+        <button id="info-button" class="info-button">
+            <img src="assets/info.png" alt="Info Icon">Info</button>
+
+        <button id="load-markers-button" class="load-markers-button">
+            <img src="assets/load.png" alt="Load Markers Icon">
+            <span id="button-text">Load Saved Markers</span>
+        </button>
+
+    </header>
+
+    <div class="sidebar" id="sidebar">
+        <div class="close-button" onclick="toggleAndCloseSidebar()">X</div>
+        <div id="dropdown-container"></div>
+    </div>
+    </header>
+    <main>
+        <div id="map-container">
+            <div id="map" style="width: 100%; height: 100vh;"></div>
+        </div>
+    </main>
+    <footer>
+        <div id="info-box" class="info-box">
+            <div id="text-info-box" class="text-info-box">
+                <img src="https://cdn.discordapp.com/attachments/1134897274024116295/1176177755663126558/larger_banner.png"
+                    class="logo" alt="Map Icon">
+                <h2>Left-click to add temporary markers</h2>
+                <h2>Ctrl+Left-click to remove them</h2><br>
+                For questions, support, or feedback, visit us on Discord!<br>
+                <a href="https://discord.gg/rWpsquDXqA" target="_blank">
+                    <img src='assets/discord.png' style="width: 60px; height: 60px;" alt="Discord Icon">
+                </a>
+            </div>
+        </div>
+
+        <div id="mouse-coordinates">
+            <span class="dynamic-coordinates"></span>
+        </div>
+
+        <div id="map-overlay"></div>
+    </footer>
+</body>
+
+</html>
